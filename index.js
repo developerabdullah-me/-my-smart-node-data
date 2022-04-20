@@ -4,6 +4,7 @@ const app =express();
 
 const port =process.env.PORT || 5000;
 app.use(cors())
+app.use(express.json());
 app.get('/',(req,res) => {
     res.send('Look mama! I can code now on')
 })
@@ -250,6 +251,10 @@ app.get('/user/:id',(req,res) => {
     // const user=users[id]
     const user=users.find(u  => u.id == id)
     res.send(user)
+})
+app.post('/user',(req,res) => {
+  console.log('request' , req.body);
+  res.send('success now ')
 })
 app.listen(port,()=>{
     console.log('Listening on port ',port);
