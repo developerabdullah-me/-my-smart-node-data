@@ -50,9 +50,9 @@ const users=[
       "phone": "010-692-6593 x09125",
       "website": "anastasia.net",
       "company": {
-        "name": "Deckow-Crist",
+        "name": "Decked-Crista",
         "catchPhrase": "Proactive didactic contingency",
-        "bs": "synergize scalable supply-chains"
+        "bs": "synergism scalable supply-chains"
       }
     },
     {
@@ -242,6 +242,7 @@ const users=[
   ]
 
 app.get('/users',(req,res) => {
+  
 res.send(users)
 })
 app.get('/user/:id',(req,res) => {
@@ -254,7 +255,11 @@ app.get('/user/:id',(req,res) => {
 })
 app.post('/user',(req,res) => {
   console.log('request' , req.body);
-  res.send('success now ')
+  console.log(req.body);
+  const user=req.body;
+  user.id=users.length + 1;
+  users.push(user);
+  res.send(users)
 })
 app.listen(port,()=>{
     console.log('Listening on port ',port);
